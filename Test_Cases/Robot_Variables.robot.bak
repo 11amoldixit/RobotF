@@ -1,0 +1,56 @@
+*** Settings ***
+
+Library		SeleniumLibrary
+Test Setup      Set Selenium Speed      0.1s
+
+*** Variables ***
+
+${Required_URL}		https://robotframework.org/
+${List_Locator}		id=project-dropdown-content
+${Variables_TEXT_Locator}       xpath=//button[text()="Variables"]
+${Scroll_TEXT_Locator}          xpath=(//h3[contains(text(),"Resource File")])
+${List_Values_Locator}          xpath=//button[@class="block mb-xsmall color-white type-small"]
+${Version_Dropdown_Locator}     id:version-drop-down
+# ${REQUIRED_VALUE}               7.0
+
+*** Test Cases ***
+
+Choose Variables From Dropdown
+	[TAGS]		ROBOT_VARIABLES
+	Navigate To required URL
+	Choose Required Value From List
+
+Check if provided value is present in the list
+    [TAGS]      LIST_CHECK
+    Navigate To required URL
+    Check List Values As Per Requirement
+
+*** Keywords ***
+
+Navigate To required URL
+	[Documentation]		KW Used for navigation
+	Open Browser		${Required_URL}		headlesschrome
+	Maximize Browser Window
+	Wait Until Page Contains		ROBOT		30s
+	
+Choose Required Value From List
+	# Page Should Contain List		${List_Locator}
+    Scroll Element Into View        ${Scroll_TEXT_Locator}
+    Click Element       id=project-drop-down
+	# Select From List By Label		${List_Locator}		Variables
+    Click Element       ${Variables_TEXT_Locator}
+
+Check List Values As Per Requirement
+    # [ARGUMENTS]     ${VALUE}
+    Scroll Element Into View        ${Version_Dropdown_Locator}
+    Click Element                   ${Version_Dropdown_Locator}
+    ${Count}        SeleniumLibrary.Get Element Count       ${List_Values_Locator}
+    ${Actual_Count}     Evaluate        1 + ${Count}
+    FOR     ${Loop}     IN RANGE        1       ${Actual_Count}
+            ${Loop_Loc}      Convert To String      (//button[@class="block mb-xsmall color-white type-small"])[${Loop}]
+            ${Element_Text}     Get Text            ${Loop_Loc}
+            ${Value_Check_Status}   Run Keyword And Return Status   Should Be Equal     ${Element_Text}     ${VALUE}
+            Log     ${Value_Check_Status}
+            Exit For Loop If        ${Value_Check_Status}
+            Run Keyword If      '${Loop}'=='${Count}'        FAIL        Required Value is not present
+    END
