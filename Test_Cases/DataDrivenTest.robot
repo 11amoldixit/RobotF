@@ -20,3 +20,7 @@ TC:3 Data Driven Testing using XML file
     ${Username}        Extract Required Data from XML File        XML_TestData        ${Test_Case_Name}        Username
     ${Password}        Extract Required Data from XML File        XML_TestData        ${Test_Case_Name}        Password
 #############################################################################
+
+NewTestCase
+    [Tags]      Demo_TAG
+    log to console      GIT
