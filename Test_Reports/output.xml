@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.11.3 on win32)" generated="2024-10-07T09:02:01.333372" rpa="false" schemaversion="5">
+<suite id="s1" name="Test Cases" source="D:\Robot\Test_Cases">
+<suite id="s1-s1" name="Slicing In RF" source="D:\Robot\Test_Cases\Slicing_In_RF.robot">
+<test id="s1-s1-t1" name="Slicing with Slicing Method in py" line="22">
+<kw name="Create List" owner="BuiltIn">
+<msg time="2024-10-07T09:02:01.593522" level="INFO">${List} = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']</msg>
+<var>${List}</var>
+<arg>1</arg>
+<arg>2</arg>
+<arg>3</arg>
+<arg>4</arg>
+<arg>5</arg>
+<arg>6</arg>
+<arg>7</arg>
+<arg>8</arg>
+<arg>9</arg>
+<arg>10</arg>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2024-10-07T09:02:01.593522" elapsed="0.000000"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2024-10-07T09:02:01.593522" level="INFO">${Reversed_List} = []</msg>
+<var>${Reversed_List}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2024-10-07T09:02:01.593522" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<msg time="2024-10-07T09:02:01.603316" level="INFO">${Reversed_List} = ['10', '9', '8', '7', '6', '5', '4', '3', '2', '1']</msg>
+<var>${Reversed_List}</var>
+<arg>${List}[::-1]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="PASS" start="2024-10-07T09:02:01.593522" elapsed="0.009794"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<msg time="2024-10-07T09:02:01.603316" level="INFO">${Sliced_L1} = ['1', '4']</msg>
+<var>${Sliced_L1}</var>
+<arg>${List}[:5:3]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="PASS" start="2024-10-07T09:02:01.603316" elapsed="0.000000"/>
+</kw>
+<tag>Slicing_Slicing</tag>
+<status status="PASS" start="2024-10-07T09:02:01.593522" elapsed="0.009794"/>
+</test>
+<status status="PASS" start="2024-10-07T09:02:01.363424" elapsed="0.239892"/>
+</suite>
+<status status="PASS" start="2024-10-07T09:02:01.333372" elapsed="0.269944"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">Slicing_Slicing</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Test Cases">Test Cases</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Slicing In RF">Test Cases.Slicing In RF</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

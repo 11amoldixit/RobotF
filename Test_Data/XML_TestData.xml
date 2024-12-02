@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Data_Driven_Testing_Using_XML>
+	<DataDrivenTest_XML1>
+		<URL>https://opensource-demo.orangehrmlive.com/web/index.php/auth/login</URL>
+		<Username>Admin</Username>
+		<Password>admin123</Password>
+	</DataDrivenTest_XML1>
+</Data_Driven_Testing_Using_XML>
